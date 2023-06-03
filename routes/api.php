@@ -21,8 +21,8 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
     Route::post('register', 'register');
     Route::post('login', 'login');
 });
-Route::controller(KendaraanController::class)->group(function () {
-    Route::get('test', 'index');
+Route::controller(KendaraanController::class)->middleware('jwt.verify')->prefix('kendaraan')->group(function () {
+    Route::post('save', 'store');
 });
 
 

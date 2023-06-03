@@ -11,12 +11,15 @@ class Kendaraan extends Eloquent
     use HasFactory;
 
 
-    protected $collection = 'users';
+    protected $collection = 'kendaraan';
     protected $primaryKey = '_id';
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'tahun_keluaran',
+        'warna',
+        'harga',
+        'kategori',
+        'mobil',
+        'montor',
     ];
 }

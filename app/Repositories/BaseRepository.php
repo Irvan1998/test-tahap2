@@ -57,11 +57,9 @@ class BaseRepository
             if ($id > 0) {
                 $data = $this->model->find($id);
                 if ($id && !$data) return $this->error("No data with ID $id", 404);
-                $attributes += array("updated_by" => $attributes['operator_by']);
                 $data->fill($attributes);
                 $data->save();
             } else {
-                $attributes += array("created_by" => $attributes['operator_by']);
                 $data = $this->model->create($attributes);
             }
             DB::commit();
