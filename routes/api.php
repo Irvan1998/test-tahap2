@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\PenjualanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,12 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
     Route::post('register', 'register');
     Route::post('login', 'login');
 });
+
 Route::controller(KendaraanController::class)->middleware('jwt.verify')->prefix('kendaraan')->group(function () {
+    Route::post('save', 'store');
+    Route::delete('remove/{id}', 'remove');
+});
+Route::controller(PenjualanController::class)->middleware('jwt.verify')->prefix('penjualan')->group(function () {
     Route::post('save', 'store');
 });
 

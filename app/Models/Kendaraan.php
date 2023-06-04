@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Kendaraan extends Eloquent
@@ -19,7 +18,11 @@ class Kendaraan extends Eloquent
         'warna',
         'harga',
         'kategori',
-        'mobil',
-        'montor',
+        'mesin',
+        'qty',
+        'kapasitas_penumpang',
+        'tipe',
+        'tipe_suspensi',
+        'tipe_transmisi',
     ];
 }

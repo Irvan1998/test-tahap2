@@ -31,11 +31,31 @@ class KendaraanController extends Controller
         if ($validator->fails()) {
             return $this->success("bad request, error validation", $validator->errors(), 400, count($validator->errors()));
         }
-        $id = (int)$request->id > 0 ? (int)$request->id : 0;
+        $id = $request->_id > 0 ? $request->_id : 0;
+
 
         $user = $this->kendaraanRepository->CreateOrUpdate($request->input(), $id);
 
         return $user;
+    }
+
+    public function detail()
+    {
+        # code...
+    }
+
+    public function remove(Request $request)
+    {
+        $id = $request->id > 0 ? $request->id : 0;
+        $oldData = $this->kendaraanRepository->find($id);
+        $cek = isset($oldData) && (int)$oldData->id > 0 ? 1 : 0;
+
+        if ($cek > 0) {
+            $data = $this->kendaraanRepository->delete($id);
+            return $this->success("ok", $data, 200, 1);
+        } else {
+            return $this->success("data gak ada", $oldData, 400, 0);
+        }
     }
 
     private function rules()

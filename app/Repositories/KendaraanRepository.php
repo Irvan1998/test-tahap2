@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Kendaraan;
-use DB;
+
 
 class KendaraanRepository extends BaseRepository
 {

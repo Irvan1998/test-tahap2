@@ -70,12 +70,10 @@ class BaseRepository
         }
     }
 
-    public function delete($id, $userId)
+    public function delete($id)
     {
         $data = $this->model->findOrFail($id);
-        $data->deleted_at = date('Y-m-d H:i:s');
-        $data->deleted_by = $userId;
-        $data->save();
+        $data->delete();
         return $data;
     }
 
@@ -84,11 +82,12 @@ class BaseRepository
         $this->model->insert($attributes);
     }
 
-    public function updateWhere($where, $data)
+    public function updateWhere($where, $attributes)
     {
 
         try {
-            $data = $this->model->where($where)->update($data);
+            $data = $this->model->where($where)->update($attributes);
+
             DB::commit();
             return $data;
         } catch (Exception $e) {

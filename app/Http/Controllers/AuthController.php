@@ -25,9 +25,9 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return $this->success("bad request, error validation", $validator->errors(), 400, count($validator->errors()));
         }
-        $id = (int)$request->id > 0 ? (int)$request->id : 0;
+        $id = $request->_id > 0 ? $request->_id : 0;
         $request->request->add(['password' => Hash::make($request->password)]);
-        $request->request->add(['operator_by' => 0]);
+
 
         $user = $this->userRepository->CreateOrUpdate($request->input(), $id);
 
