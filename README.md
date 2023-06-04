@@ -43,6 +43,9 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 9. Jalankan perintah php artisan serve
 
 
+link untuk postman = https://api.postman.com/collections/10628045-5b131171-2729-4f9a-9141-4b0bd4151c22?access_key=PMAT-01H22XEXBAY3M2DRVMVSNK0T5T
+
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
