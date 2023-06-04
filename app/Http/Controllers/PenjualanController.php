@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penjualan;
 use App\Repositories\KendaraanRepository;
 use App\Repositories\PenjualanRepository;
 use App\Traits\ResponseAPI;
@@ -23,29 +24,10 @@ class PenjualanController extends Controller
 
     public function index(Request $request)
     {
-        $per_page = (int)$request->per_page > 0 ? (int)$request->per_page : 0;
-        $keyword = !empty($request->keyword) ? strtolower($request->keyword) : '';
-        $keyword_column = !empty($request->keyword_column) ? $request->keyword_column : 'nama_pembeli';
-        $sort_column = !empty($request->sort_column) ? $request->sort_column : 'nama_pembeli';
-        $sort_order = !empty($request->sort_order) ? $request->sort_order : 'ASC';
-        $page_number = (int)$request->page_number > 0 ? (int)$request->page_number : 1;
-
-        $where = array();
-
-        $count = $this->kendaraanRepository->countData($where);
-
-        $data = [];
-        if ($count > 0) {
-            if (!empty($keyword)) {
-                $per_page = $per_page > 0 ? $per_page : $count;
-                $offset = ($page_number - 1) * $per_page;
-                $data = $this->kendaraanRepository->searchData($where, (int)$per_page, (int)$offset, $sort_column, $sort_order, $keyword_column, $keyword);
-            } else {
-                $per_page = $per_page > 0 ? $per_page : $count;
-                $offset = ($page_number - 1) * $per_page;
-                $data = $this->kendaraanRepository->getAllData($where, (int)$per_page, (int)$offset, $sort_column, $sort_order);
-            }
-        }
+        $where = array(
+            "id_kendaraan" => $request->id
+        );
+        $data =  $this->penjualanRepository->whereData($where);
 
         return $this->success("berhasil", $data, 200, 1);
     }

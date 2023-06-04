@@ -34,7 +34,7 @@ class BaseRepository
     }
     public function whereData($where = array())
     {
-        $data = $this->model->where($where);
+        $data = $this->model->where($where)->get();
         return $data;
     }
 
@@ -78,10 +78,6 @@ class BaseRepository
         return $data;
     }
 
-    public function insertBatch(array $attributes)
-    {
-        $this->model->insert($attributes);
-    }
 
     public function updateWhere($where, $attributes)
     {

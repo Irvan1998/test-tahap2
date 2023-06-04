@@ -30,7 +30,7 @@ Route::controller(KendaraanController::class)->middleware('jwt.verify')->prefix(
 });
 Route::controller(PenjualanController::class)->middleware('jwt.verify')->prefix('penjualan')->group(function () {
     Route::post('save', 'store');
-    Route::post('laporan', 'index');
+    Route::get('laporan/{id}', 'index');
 });
 
 
