@@ -21,6 +21,28 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+
+## Cara Instalasi
+
+1. Clone repository ini
+
+2. Jalankan perintah composer install
+
+3. Jalankan perintah npm install & npm run dev
+
+4. buat file .env
+
+5. Lakukan copy isi file .env.example ke file .env
+
+6. Jalankan perintah php artisan key:generate
+
+7. buat database sesuai nama yang ada di .env
+
+8. Jalankan perintah php artisan migrate
+
+9. Jalankan perintah php artisan serve
+
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
@@ -62,3 +84,5 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
