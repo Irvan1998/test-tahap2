@@ -24,11 +24,13 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
 });
 
 Route::controller(KendaraanController::class)->middleware('jwt.verify')->prefix('kendaraan')->group(function () {
+    Route::post('view', 'index');
     Route::post('save', 'store');
     Route::delete('remove/{id}', 'remove');
 });
 Route::controller(PenjualanController::class)->middleware('jwt.verify')->prefix('penjualan')->group(function () {
     Route::post('save', 'store');
+    Route::post('laporan', 'index');
 });
 
 

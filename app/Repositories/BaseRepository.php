@@ -46,7 +46,8 @@ class BaseRepository
 
     public function searchData($where = array(), $per_page = 10, $offset = 1, $sort_column, $sort_order = "ASC", $search_column = "", $keyword = "")
     {
-        $data = $this->model->where($where)->whereRaw("LOWER($search_column) like '%" . $keyword . "%'")->offset($offset)->limit($per_page)->orderBy($sort_column, $sort_order)->get();
+        $data = $this->model->where($where)->orwhere($search_column, 'like', "%{$keyword}%")->offset($offset)->limit($per_page)->orderBy($sort_column, $sort_order)->get();
+
         return $data;
     }
 
@@ -87,7 +88,6 @@ class BaseRepository
 
         try {
             $data = $this->model->where($where)->update($attributes);
-
             DB::commit();
             return $data;
         } catch (Exception $e) {
